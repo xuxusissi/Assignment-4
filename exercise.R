@@ -154,7 +154,7 @@ pew2 <- raw %>% gather(key="income", value="freq", -religion)
 #(2)
 library(tidyverse)
 
-bb <- read.csv("billboard.csv")
+bb <- read_csv("billboard.csv")
 bb.1 <- bb %>% gather(key="week", value="rank", -year,-artist.inverted, -track, -time, -genre, -date.entered, -date.peaked)
 bb.2 <- bb.1 %>% select(year, artist=artist.inverted, time, track, date=date.entered, week, rank)
 bb.3 <- bb.2 %>% arrange(track)
@@ -165,3 +165,4 @@ bb.7 <- bb.6 %>% dplyr::rename(week=B)
 bb.8 <- bb.7 %>% arrange(artist, track)
 bb.9 <- bb.8 %>% mutate(date=date + (week-1)*7)
 bb.10 <- bb.9 %>% mutate(rank=as.integer(rank)) 
+
